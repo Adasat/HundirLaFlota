@@ -1,5 +1,10 @@
+// Elementos extraídos del DOM
 const container = document.querySelector('#container')
-const ships = [17, 12, 6] 
+let counterElement // Almacenará el texto del contador de barcos cuando lo creemos en la función fillTablero
+
+// Game variables
+let ships = [17, 12, 6] 
+let hits = 0
 
 /*  EL TABLERO: 8 x 8
     x x x x x x x x
@@ -36,31 +41,41 @@ function fillTablero () {
 
     // Insertar el tablero en el contenedor para que aparezca
     container.appendChild(tablero)
+
+    let counterText = document.createElement('h2')
+    counterText.innerText = `Remaining ships: ${ships.length}`
+    container.appendChild(counterText)
+    counterElement = counterText
+
 }
 
 function handleClickOnCelss(cell, cellId) {
 
-    // cellId = 14
-    // ships = [17, 12, 6] 
+    let containsMiss = cell.classList.contains('miss')
+    let containsHit = cell.classList.contains('hit')
 
-    for(ship of ships) {
-
-        console.log(ship)
-
-        if(cellId === ship) {
-            alert('CATAPUM CON-PUN!!')
-            cell.classList.add('hit')
-            cell.innerText = 'O'
-            return 
-        }
+    if(containsHit || containsMiss) {
+        return 
     }
 
-    console.log('Splash!!')
-    cell.classList.add('miss')
-    cell.innerText = 'X'
+    // Forma 2 de detectar si acertamos un barco
+    // Includes nos dice si un valor (cellId) está incluido dentro de un array (ships)
+    if(ships.includes(cellId)) {
+        console.log('CATAPUM CON-PUN!!')
+        // Añade la clase hit para estilar cuando acertamos la celda
+        cell.classList.add('hit')
+        cell.innerText = 'O'
+        hits++
+        console.log(hits)
+        counterElement.innerText = `Remaining ships: ${ships.length - hits}`
+    } else {
+        console.log('Splash!!')
+        // Añade la clase hit para estilar cuando fallamos la celda
+        cell.classList.add('miss')
+        cell.innerText = 'X'
+    }
 }
 
 window.onload = function () {
     fillTablero()
-   
 }
