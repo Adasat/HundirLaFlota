@@ -36,10 +36,14 @@ body {
 }
 
 .miss {
-    background-color: red;
+    background-color: aqua;
     cursor: default;
 }
 
 .miss:hover {
+    background-color: aqua;
+}
+
+.hit {
     background-color: red;
 }

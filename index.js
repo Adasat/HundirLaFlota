@@ -1,4 +1,5 @@
 const container = document.querySelector('#container')
+const ship = 17
 
 /*  EL TABLERO: 8 x 8
     x x x x x x x x
@@ -26,7 +27,7 @@ function fillTablero () {
 
         // Añade un chismoso que detecta cuándo hacemos click en la celda
         cell.addEventListener('click', function () {
-            handleClickOnCelss(cell)
+            handleClickOnCelss(cell, i)
         })
 
         // Insertar la celda al tablero
@@ -37,10 +38,17 @@ function fillTablero () {
     container.appendChild(tablero)
 }
 
-function handleClickOnCelss(cell) {
-    console.log('Clicked!!', cell)
-    cell.classList.add('miss')
-    cell.innerText = 'X'
+function handleClickOnCelss(cell, cellId) {
+    
+    if(cellId === ship) {
+        alert('CATAPUM CON-PUN!!')
+        cell.classList.add('hit')
+        cell.innerText = 'O'
+    } else {
+        console.log('Splash!!')
+        cell.classList.add('miss')
+        cell.innerText = 'X'
+    }
 }
 
 window.onload = function () {
