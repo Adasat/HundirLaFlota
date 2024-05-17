@@ -1,7 +1,9 @@
 // Elementos extraídos del DOM
 const container = document.querySelector('#container')
 let counterElement // Almacenará el texto del contador de barcos cuando lo creemos en la función fillTablero
+let tablero
 let win = document.querySelector('#win')
+let restart = document.querySelector('#restart')
 
 // Game variables
 let numberOfShips = 1
@@ -19,6 +21,8 @@ console.log(ships)
     x x x x x x x x
     x x x x x x x x
 */
+
+
 
 function shipRandomPositions() {
 
@@ -44,7 +48,7 @@ function shipRandomPositions() {
 // Esta función hace aparecer el tablero
 function fillTablero () {
     // Crear tablero
-    const tablero = document.createElement('div')
+    tablero = document.createElement('div')
     tablero.setAttribute('id', 'tablero')
 
     // Generación de celdas
@@ -110,8 +114,15 @@ function checkWinner() {
     if(hits === numberOfShips) {
         console.log(win)
         win.style.display = 'flex'
+        container.removeChild(tablero)
+        container.removeChild(counterElement)
+        fillTablero()
     }
 }
+
+restart.addEventListener('click', function() {
+    win.style.display = 'none'
+})
 
 window.onload = function () {
     fillTablero()
