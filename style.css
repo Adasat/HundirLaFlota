@@ -28,8 +28,18 @@ body {
 .ship {
     border: solid 1px red;
     padding: 5px;
+    cursor: pointer;
 }
 
 .ship:hover {
     background-color: pink;
+}
+
+.miss {
+    background-color: red;
+    cursor: default;
+}
+
+.miss:hover {
+    background-color: red;
 }

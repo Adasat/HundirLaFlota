@@ -24,12 +24,23 @@ function fillTablero () {
         cell.classList.add('ship')
         cell.innerText =`CELL ${i}`
 
+        // Añade un chismoso que detecta cuándo hacemos click en la celda
+        cell.addEventListener('click', function () {
+            handleClickOnCelss(cell)
+        })
+
         // Insertar la celda al tablero
         tablero.appendChild(cell)
     }
 
     // Insertar el tablero en el contenedor para que aparezca
     container.appendChild(tablero)
+}
+
+function handleClickOnCelss(cell) {
+    console.log('Clicked!!', cell)
+    cell.classList.add('miss')
+    cell.innerText = 'X'
 }
 
 window.onload = function () {
