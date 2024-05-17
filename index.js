@@ -1,5 +1,5 @@
 const container = document.querySelector('#container')
-const ship = 17
+const ships = [17, 12, 6] 
 
 /*  EL TABLERO: 8 x 8
     x x x x x x x x
@@ -39,16 +39,25 @@ function fillTablero () {
 }
 
 function handleClickOnCelss(cell, cellId) {
-    
-    if(cellId === ship) {
-        alert('CATAPUM CON-PUN!!')
-        cell.classList.add('hit')
-        cell.innerText = 'O'
-    } else {
-        console.log('Splash!!')
-        cell.classList.add('miss')
-        cell.innerText = 'X'
+
+    // cellId = 14
+    // ships = [17, 12, 6] 
+
+    for(ship of ships) {
+
+        console.log(ship)
+
+        if(cellId === ship) {
+            alert('CATAPUM CON-PUN!!')
+            cell.classList.add('hit')
+            cell.innerText = 'O'
+            return 
+        }
     }
+
+    console.log('Splash!!')
+    cell.classList.add('miss')
+    cell.innerText = 'X'
 }
 
 window.onload = function () {
