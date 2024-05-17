@@ -19,10 +19,17 @@ body {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    width: 70vw;
-    height: 70vh;
-    background-image: url('https://cdn.discordapp.com/attachments/1091304047153250364/1240949883561705482/file-dRSYjIIfWy4oXB1z9eZV1JfL.png?ex=66486c23&is=66471aa3&hm=8eed3d314153f59afa1bf27a926068ac61ef446b181f4c069fb80411c158bb29&');
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.9;
+    padding: 50px;
+}
+
+.ship {
+    border: solid 1px red;
+    padding: 5px;
+}
+
+.ship:hover {
+    background-color: pink;
 }
