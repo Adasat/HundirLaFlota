@@ -3,8 +3,11 @@ const container = document.querySelector('#container')
 let counterElement // Almacenará el texto del contador de barcos cuando lo creemos en la función fillTablero
 
 // Game variables
-let ships = [17, 12, 6] 
+let numberOfShips = 8
+let ships = shipRandomPositions()
 let hits = 0
+
+console.log(ships)
 
 /*  EL TABLERO: 8 x 8
     x x x x x x x x
@@ -15,6 +18,27 @@ let hits = 0
     x x x x x x x x
     x x x x x x x x
 */
+
+function shipRandomPositions() {
+
+    let randomPositions = []
+
+    while(randomPositions.length < numberOfShips) {
+
+        const decimalBetween0And64 = Math.random() * 64
+        const integerBetween0And63 = Math.floor(decimalBetween0And64)
+        
+        let isIncluded = randomPositions.includes(integerBetween0And63)
+        console.log(isIncluded)
+        
+        if(isIncluded === false) {
+            randomPositions.push(integerBetween0And63)
+        } 
+    }
+    
+    return randomPositions
+}
+
 
 // Esta función hace aparecer el tablero
 function fillTablero () {
@@ -50,10 +74,12 @@ function fillTablero () {
 }
 
 function handleClickOnCelss(cell, cellId) {
-
+    
+    // Comprueba si la celda tiene las clases .miss o .hit 
     let containsMiss = cell.classList.contains('miss')
     let containsHit = cell.classList.contains('hit')
 
+    // Si la celda tiene alguna de esas dos clases, detiene la ejecución para que no salgan números negativos en el texto de abajo
     if(containsHit || containsMiss) {
         return 
     }
