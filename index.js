@@ -1,9 +1,10 @@
 // Elementos extraídos del DOM
 const container = document.querySelector('#container')
 let counterElement // Almacenará el texto del contador de barcos cuando lo creemos en la función fillTablero
+let win = document.querySelector('#win')
 
 // Game variables
-let numberOfShips = 8
+let numberOfShips = 1
 let ships = shipRandomPositions()
 let hits = 0
 
@@ -99,6 +100,16 @@ function handleClickOnCelss(cell, cellId) {
         // Añade la clase hit para estilar cuando fallamos la celda
         cell.classList.add('miss')
         cell.innerText = 'X'
+    }
+
+    // Cuando las celdas y las variables quedan actualizadas, comprueba si el jugador ha ganado
+    checkWinner()
+}
+
+function checkWinner() {
+    if(hits === numberOfShips) {
+        console.log(win)
+        win.style.display = 'flex'
     }
 }
 
