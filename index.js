@@ -31,9 +31,6 @@ function fillTablero () {
 
 }
 
-
-
-
 window.onload = function () {
     fillTablero()
    
