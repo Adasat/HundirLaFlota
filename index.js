@@ -6,7 +6,7 @@ let win = document.querySelector('#win')
 let restart = document.querySelector('#restart')
 
 // Game variables
-let numberOfShips = 1
+let numberOfShips = 2
 let ships = shipRandomPositions()
 let hits = 0
 
@@ -57,7 +57,7 @@ function fillTablero () {
         let cell = document.createElement('div')
         cell.setAttribute('id', i)
         cell.classList.add('ship')
-        cell.innerText =`CELL ${i}`
+        cell.innerText =`C ${i}`
 
         // Añade un chismoso que detecta cuándo hacemos click en la celda
         cell.addEventListener('click', function () {
@@ -95,7 +95,7 @@ function handleClickOnCelss(cell, cellId) {
         console.log('CATAPUM CON-PUN!!')
         // Añade la clase hit para estilar cuando acertamos la celda
         cell.classList.add('hit')
-        cell.innerText = 'O'
+        cell.innerText = ''
         hits++
         console.log(hits)
         counterElement.innerText = `Remaining ships: ${ships.length - hits}`
@@ -103,7 +103,7 @@ function handleClickOnCelss(cell, cellId) {
         console.log('Splash!!')
         // Añade la clase hit para estilar cuando fallamos la celda
         cell.classList.add('miss')
-        cell.innerText = 'X'
+        cell.innerText = ''
     }
 
     // Cuando las celdas y las variables quedan actualizadas, comprueba si el jugador ha ganado
@@ -117,6 +117,7 @@ function checkWinner() {
         container.removeChild(tablero)
         container.removeChild(counterElement)
         fillTablero()
+
     }
 }
 
